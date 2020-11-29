@@ -84,10 +84,11 @@ class ControllerReport:
 
     # Méthodes des différentes commandes de l'utilisateur.
     def players(self, values):
-        # On va jouer avec les inputs
+        all_ = False
         try:
             int(values[0])
         except ValueError:
+            all_ = True
             sort_by = [values[0]]
             if len(values) > 1:
                 sort_by += [values[1]]
@@ -108,6 +109,8 @@ class ControllerReport:
 
         if not self.error:
             print(subtitle)
+            if not all_:
+                players = sorted(players, key=lambda x: (x.points, x.rank), reverse=True)
             self.view_player.read_all(players)
 
             if values[-1].lower() == 'file':
