@@ -29,10 +29,11 @@ class ViewTournamentPlay(View):
         l3 = "{}note: only possible if all matchs of the current turn is finish. \n\n\n".format(LARGE_SPACE)
 
         l4 = "{}match id winner id  OR  m id w id \n".format(MEDIUM_SPACE)
-        l5 = "{}exemple: match 7 winner 75  OR  m 7 w 75\n\n\n".format(LARGE_SPACE)
+        l5 = "{}exemple: match 7 winner 75  OR  m 7 w 75\n".format(LARGE_SPACE)
+        l6 = "{}note: for equality, the last value must be '0'.\n\n\n".format(LARGE_SPACE)
 
-        l6 = "{}update <name1>=value1 <name2>=value2\n".format(MEDIUM_SPACE)
-        l7 = "{}exemple: update country=france\n".format(LARGE_SPACE)
-        l8 = "{}note: you can change place, country, description\n".format(LARGE_SPACE)
-        r += l1 + l2 + l3 + l4 + l5 + l6 + l7 + l8
+        l7 = "{}update <name1>=value1 <name2>=value2\n".format(MEDIUM_SPACE)
+        l8 = "{}exemple: update country=france\n".format(LARGE_SPACE)
+        l9 = "{}note: you can change place, country, description\n".format(LARGE_SPACE)
+        r += l1 + l2 + l3 + l4 + l5 + l6 + l7 + l8 + l9
         print(r)
