@@ -14,14 +14,15 @@ class ModelTournament(Model):
 
     def read_all(self, sort_by):
         tournaments = [Tournament.deserialize(tournament) for tournament in db_tournament.read_all()]
+
         reverse = True if len(sort_by) == 2 else False
         y = ('n_turn' if sort_by[0] == 'max_turn' else
              'players' if sort_by[0] == 'ids_player' else sort_by[0])
 
         if sort_by[0] in ('description', 'ids_player'):
-            def key(x): len(getattr(x, y))
+            def key(x): return len(getattr(x, y))
         else:
-            def key(x): getattr(x, y)
+            def key(x): return getattr(x, y)
 
         self._format_birth_to_datetime(tournaments, 'date') if sort_by[0] == 'date' else None
         tournaments = sorted(tournaments, key=key, reverse=reverse)

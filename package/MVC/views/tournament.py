@@ -46,7 +46,7 @@ class ViewTournament(View):
         l4 = "{}note: <name> can be equal to 'id, name, place, country, date,\n".format(LARGE_SPACE)
         l5 = "{}max_turn, n_player, time, description, ids_player, status\n\n\n".format(LARGE_SPACE)
 
-        l6 = "{}show id\n".format(MEDIUM_SPACE)
+        l6 = "{}focus id\n".format(MEDIUM_SPACE)
         l7 = "{}note: this will take you to the page to change\n".format(LARGE_SPACE)
         l8 = "{}some tournament information \n\n\n".format(LARGE_SPACE)
 
