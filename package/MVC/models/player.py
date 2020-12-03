@@ -35,7 +35,7 @@ class ModelPlayer(Model):
         last_name, first_name, sex, birth, rank = values
         last_name, first_name = last_name.capitalize(), first_name.capitalize()
         sex, rank = sex.upper(), int(rank)
-        birth = self._format_birth(birth, '-' if '-' in birth else ':')
+        birth = self._format_birth(birth, '-' if '-' in birth else ':' if ':' in birth else '/')
         player = Player(last_name, first_name, sex, birth, rank)
         db_player.create(player.serialize())
 
