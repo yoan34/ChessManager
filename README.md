@@ -5,7 +5,7 @@ On va dans le répertoire du projet et crée un espace virtuel:</br>
 <b> cd ChessManager && python -m venv env </b>
 
 On active l'espace virtuel et installe les dépendances:</br>
-<b> .\env\scripts\actvate && pip install -r requirements.txt </b>
+<b> .\env\scripts\activate && pip install -r requirements.txt </b>
 
 Pour créer un rapport flake8-html on utile cette commande:</br>
 <b>flake8 --format=html --htmldir=flake-report</b>
