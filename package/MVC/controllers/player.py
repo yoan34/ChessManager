@@ -121,7 +121,7 @@ class ControllerPlayer:
             players_registered.remove(id)
             self.model_tournament.update(id_tournament, {'players': players_registered})
 
-        for id in ids_available:
+        for id in ids_available + ids_registred:
             finished = self.model_player.read(id).ids_tournaments
             for id_finish in finished:
                 tournament = self.model_tournament.read(id_finish)

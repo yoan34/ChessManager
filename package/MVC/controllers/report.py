@@ -18,6 +18,7 @@ entré ou en retourne un nouveau.
 '''
 
 import os
+import copy
 
 from ..models.tournament import ModelTournament
 from ..models.player import ModelPlayer
@@ -110,8 +111,18 @@ class ControllerReport:
         if not self.error:
             print(subtitle)
             if not all_:
-                players = sorted(players, key=lambda x: (x.points, x.rank), reverse=True)
-            self.view_player.read_all(players)
+                ranking = self.model_tournament.read(int(values[0]), 'ranking')
+                print(ranking)
+                input()
+                # ID, PTS, RANK, LASTNAME, FIRSTNAME
+                if ranking:
+                    players_copied = copy.deepcopy(players)
+                    for player_copy in players_copied:
+                        rank = list(filter(lambda x: x[0] == player_copy.id, ranking))[0]
+                        player_copy.points = rank[1]
+
+                    players = sorted(players_copied, key=lambda x: (x.points, x.rank), reverse=True)
+                self.view_player.read_all(players)
 
             if values[-1].lower() == 'file':
                 file, origin_stdout = FileManager.create(['players', *values[:-1]])
