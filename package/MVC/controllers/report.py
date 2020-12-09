@@ -119,7 +119,7 @@ class ControllerReport:
                         player_copy.points = rank[1]
 
                     players = sorted(players_copied, key=lambda x: (x.points, x.rank), reverse=True)
-                self.view_player.read_all(players)
+            self.view_player.read_all(players)
 
             if values[-1].lower() == 'file':
                 file, origin_stdout = FileManager.create(['players', *values[:-1]])

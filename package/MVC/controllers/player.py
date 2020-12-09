@@ -96,6 +96,7 @@ class ControllerPlayer:
         self.model_player.create(values)
 
     def delete(self, values):
+        # recupère les ids des différentes status (registered, not exist, available, in play)
         ids = list(set(map(int, values)))
         ids_available, ids_played, ids_registred, ids_wrong = self.model_player.check_ids(ids)
         self._delete_dependency_player(ids_registred, ids_available)
@@ -115,12 +116,15 @@ class ControllerPlayer:
 
     # Gère les dépendance lors d'une suppression avec la commande 'delete'.
     def _delete_dependency_player(self, ids_registred, ids_available):
+        # supprime du tournoi en cours d'enregistrement l'id du joueur supprimer
         for id in ids_registred:
             id_tournament = int(self.model_player.read(id, 'status')[14:])
             players_registered = self.model_tournament.read(id_tournament, 'players')
             players_registered.remove(id)
             self.model_tournament.update(id_tournament, {'players': players_registered})
 
+        # pour chaque tournoi fini par le joueur supprimé, récupère le tournoi
+        # et supprime de ses joueurs l'id du joueur supprimé.
         for id in ids_available + ids_registred:
             finished = self.model_player.read(id).ids_tournaments
             for id_finish in finished:
