@@ -59,7 +59,7 @@ class ControllerTournamentPlay:
     def run(self, path, value):
         self.target = int(path.split('/')[-2])
         self.on_turn = len(self.model_tournament.read(self.target, 'turns')) - 1
-        self.page = self.on_turn if self.page == -1 else self.page
+        self.page = self.on_turn
 
         value = None if value is not None and not value.strip() else value
 
