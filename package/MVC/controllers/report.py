@@ -112,9 +112,6 @@ class ControllerReport:
             print(subtitle)
             if not all_:
                 ranking = self.model_tournament.read(int(values[0]), 'ranking')
-                print(ranking)
-                input()
-                # ID, PTS, RANK, LASTNAME, FIRSTNAME
                 if ranking:
                     players_copied = copy.deepcopy(players)
                     for player_copy in players_copied:
